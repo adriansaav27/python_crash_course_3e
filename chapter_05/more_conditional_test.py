@@ -1,12 +1,12 @@
-fruit = 'Strawberry'
+fruit = "Strawberry"
 print("\nIs fruit == 'Strawberry'? I predict True.")
-print(fruit == 'Strawberry')
+print(fruit == "Strawberry")
 print("Is fruit == 'Watermelon'? I predict False.")
-print(fruit == 'Watermelon')
+print(fruit == "Watermelon")
 print("\nIs fruit.lower() == 'strawberry'? I predict True.")
-print(fruit.lower() == 'strawberry')
+print(fruit.lower() == "strawberry")
 print("Is fruit.lower() == 'Strawberry'? I predict False.")
-print(fruit.lower() == 'Strawberry')
+print(fruit.lower() == "Strawberry")
 
 number = 14
 print("\nIs number == 14? I predict True.")
@@ -36,7 +36,7 @@ print(number > 20 and number < 30)
 print("\nIs number >20 and <25? I predict False.")
 print(number > 20 and number < 25)
 
-numbers = [ 14, 27 ]
+numbers = [14, 27]
 print("\nIs number 14 in list? I predict True.")
 print(14 in numbers)
 print("\nIs number 15 in list? I predict False.")

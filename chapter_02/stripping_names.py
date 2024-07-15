@@ -1,4 +1,4 @@
-name = '\tray\t'
+name = "\tray\t"
 print(f">{name}<")
 print(f">{name.lstrip()}<")
 print(f">{name.rstrip()}<")

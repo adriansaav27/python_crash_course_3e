@@ -1,4 +1,10 @@
-sandwich_orders = [ "BLT sándwich", "Reuben", "Sándwich de roast beef", "Croque-monsieur", "Cheesesteak" ]
+sandwich_orders = [
+    "BLT sándwich",
+    "Reuben",
+    "Sándwich de roast beef",
+    "Croque-monsieur",
+    "Cheesesteak",
+]
 finished_sandwiches = []
 
 while sandwich_orders:

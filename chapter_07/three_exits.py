@@ -2,10 +2,10 @@ cont = 0
 while True:
     cont += 1
     prompt = input("Hi! How old are you? (Enter 'quit' when you are finished.)\n")
-    
-    if prompt == 'quit':
+
+    if prompt == "quit":
         break
-    
+
     if int(prompt) < 3:
         print("The cost is FREE")
     elif int(prompt) >= 3 and int(prompt) < 12:

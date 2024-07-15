@@ -1,6 +1,6 @@
 favorite_places = {
-    "Adrián" : ['barcelona', 'madrid', 'valencia', 1],
-    "Andra" : ['la rioja', 'galicia', 'asturias', 2]
+    "Adrián": ["barcelona", "madrid", "valencia", 1],
+    "Andra": ["la rioja", "galicia", "asturias", 2],
 }
 
 for key, value in favorite_places.items():

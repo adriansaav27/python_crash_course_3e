@@ -1,4 +1,4 @@
-msg = 'Hello Python world!'
+msg = "Hello Python world!"
 print(msg)
-msg = 'Hello Python world! (changed)'
+msg = "Hello Python world! (changed)"
 print(msg)

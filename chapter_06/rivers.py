@@ -1,11 +1,7 @@
-rivers = {
-    'nile' : 'egipt',
-    'ebro' : 'spain',
-    'rin' : 'germany'
-}
+rivers = {"nile": "egipt", "ebro": "spain", "rin": "germany"}
 
 for key, value in rivers.items():
-    print(f'The {key.title()} runs through {value.title()}')
+    print(f"The {key.title()} runs through {value.title()}")
 
 for key in rivers.keys():
     print(key.title())

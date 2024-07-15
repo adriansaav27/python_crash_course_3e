@@ -1,7 +1,7 @@
-pizzas = [ 'napolitana', 'carbonara', 'margarita' ]
+pizzas = ["napolitana", "carbonara", "margarita"]
 friend_pizzas = pizzas[:]
-pizzas.append('hawaiana')
-friend_pizzas.append('pepperoni')
+pizzas.append("hawaiana")
+friend_pizzas.append("pepperoni")
 print("My favorite pizzas are:")
 for pizza in pizzas:
     print(pizza)

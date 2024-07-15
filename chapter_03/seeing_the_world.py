@@ -1,4 +1,4 @@
-locations = ['Tokio', 'Kioto', 'Osaka', 'Yokohama', 'Nagoya']
+locations = ["Tokio", "Kioto", "Osaka", "Yokohama", "Nagoya"]
 print(locations)
 print(sorted(locations))
 print(locations)
