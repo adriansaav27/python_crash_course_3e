@@ -4,8 +4,8 @@ class Settings:
     # Inicializa las opciones del juego.
     def __init__(self):
         # Opciones de pantalla.
-        self.screen_width = 1200
-        self.screen_height = 800
+        self.screen_width = 1280
+        self.screen_height = 720
         self.bg_color = (58, 76, 122)
 
         # Configuración de la nave.

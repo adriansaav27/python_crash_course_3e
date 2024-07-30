@@ -3,6 +3,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
+from alien import Alien
 
 
 # Clase general para gestionar los activos y el comportamiento del juego.
@@ -30,6 +31,8 @@ class AlienInvasion:
 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
+        self.aliens = pygame.sprite.Group()
+        self._create_fleet()
 
     # Inicia el bucle principal del juego.
     def run_game(self):
@@ -74,6 +77,7 @@ class AlienInvasion:
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.ship.blitme()
+        self.aliens.draw(self.screen)
 
         # Pinta la pantalla dibujada más recientemente.
         pygame.display.flip()
@@ -93,6 +97,30 @@ class AlienInvasion:
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
         print(len(self.bullets))
+
+    # Crea la flota de aliens.
+    def _create_fleet(self):
+        # Crea un alien y agrega aliens hasta que no quede más espacio.
+        # El espacio entre aliens es un alien de ancho y alto.
+        alien = Alien(self)
+        alien_width, alien_height = alien.rect.size
+
+        current_x, current_y = alien_width, alien_height
+        while current_y < (self.settings.screen_height - 3 * alien_height):
+            while current_x < (self.settings.screen_width - 2 * alien_width):
+                self._create_alien(current_x, current_y)
+                current_x += 2 * alien_width
+            # Finaliza la fila, resetea el valor de 'x', e incremente el valor de 'y'.
+            current_x = alien_width
+            current_y += 2 * alien_height
+
+    # Crea un alien y lo posiciona en la fila.
+    def _create_alien(self, x_position, y_position):
+        new_alien = Alien(self)
+        new_alien.x = x_position
+        new_alien.rect.x = x_position
+        new_alien.rect.y = y_position
+        self.aliens.add(new_alien)
 
 
 # Crea una instancia de juego y ejecuta el juego.
