@@ -97,7 +97,19 @@ class AlienInvasion:
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
-        print(len(self.bullets))
+
+        self._check_bullet_alien_collisions()
+
+    # Responde a las colisiones proyectil-alien.
+    def _check_bullet_alien_collisions(self):
+
+        # Comprueba si algún proyectil colisiona con un alien.
+        collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+
+        if not self.aliens:
+            # Destruye el proyectil actual y crea una nueva flota.
+            self.bullets.empty()
+            self._create_fleet()
 
     # Crea la flota de aliens.
     def _create_fleet(self):
