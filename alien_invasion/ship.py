@@ -40,3 +40,8 @@ class Ship:
 
         # Actualiza el rect, desde el valor de la x.
         self.rect.x = self.x
+
+    # Centra la nave en la pantalla.
+    def center_ship(self):
+        self.rect.midbottom = self.screen_rect.midbottom
+        self.x = float(self.rect.x)
