@@ -1,4 +1,4 @@
-# Seguimiento de las estadística de Alien Invasion.
+# Clase de seguimiento de las estadística de Alien Invasion.
 class GameStats:
 
     # Inicializa las estadísticas.
