@@ -132,6 +132,7 @@ class AlienInvasion:
             # Destruye el proyectil actual y crea una nueva flota.
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
     # Crea la flota de aliens.
     def _create_fleet(self):
@@ -214,7 +215,9 @@ class AlienInvasion:
     def _check_play_button(self, mouse_pos):
         button_clicked = self.play_button.rect.collidepoint(mouse_pos)
         if button_clicked and not self.game_active:
-            # Resetesa las estadísticas del juego.
+            # Resetea las configuraciones del juego.
+            self.settings.initialize_dynamic_settings()
+            # Resetea las estadísticas del juego.
             self.stats.reset_stats()
             self.game_active = True
 
