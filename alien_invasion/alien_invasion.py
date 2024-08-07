@@ -3,6 +3,7 @@ from time import sleep
 import pygame
 from settings import Settings
 from game_stats import GameStats
+from scoreboard import Scoreboard
 from button import Button
 from ship import Ship
 from bullet import Bullet
@@ -32,8 +33,9 @@ class AlienInvasion:
         # Establece el color de fondo.
         self.screen.fill(self.settings.bg_color)
 
-        # Crea una instancia para almacenar estadísticas.
+        # Crea una instancia para almacenar estadísticas, y crea la tabla de puntuaciones.
         self.stats = GameStats(self)
+        self.sb = Scoreboard(self)
 
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
@@ -98,6 +100,10 @@ class AlienInvasion:
         self.ship.blitme()
         self.aliens.draw(self.screen)
 
+        # Pinta la puntuación.
+        self.sb.show_score()
+        self.sb.check_high_score()
+
         # Pinta el botoón de jugar si el juego está inactivo.
         if not self.game_active:
             self.play_button.draw_button()
@@ -128,11 +134,21 @@ class AlienInvasion:
         # Comprueba si algún proyectil colisiona con un alien.
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
 
+        if collisions:
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
+            self.stats.score += self.settings.alien_points
+            self.sb.prep_score()
+
         if not self.aliens:
             # Destruye el proyectil actual y crea una nueva flota.
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+
+            # Incrementa el nivel.
+            self.stats.level += 1
+            self.sb.prep_level()
 
     # Crea la flota de aliens.
     def _create_fleet(self):
@@ -186,8 +202,9 @@ class AlienInvasion:
     # Responde cuando la nave es golpeada.
     def _ship_hit(self):
         if self.stats.ships_left > 0:
-            # Decrementa las naves restantes.
+            # Decrementa las naves restantes, y actualiza la puntuación.
             self.stats.ships_left -= 1
+            self.sb.prep_ships()
 
             # Elimina las balas y aliens restantes.
             self.bullets.empty()
@@ -219,6 +236,9 @@ class AlienInvasion:
             self.settings.initialize_dynamic_settings()
             # Resetea las estadísticas del juego.
             self.stats.reset_stats()
+            self.sb.prep_score()
+            self.sb.prep_level()
+            self.sb.prep_ships()
             self.game_active = True
 
             # Lispia las balas y los aliens restantes.

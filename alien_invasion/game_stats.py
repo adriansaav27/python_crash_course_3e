@@ -6,6 +6,11 @@ class GameStats:
         self.settings = ai_game.settings
         self.reset_stats()
 
+        # Puntuación máxima que nunca debe de ser reseteada.
+        self.high_score = 0
+
     # Inicializa las estadísticas que pueden cambiar durante la partida.
     def reset_stats(self):
         self.ships_left = self.settings.ship_limit
+        self.score = 0
+        self.level = 1
