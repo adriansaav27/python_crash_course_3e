@@ -6,7 +6,6 @@ from random_walk import RandomWalk
 while True:
 
     # Crea un camino aleatorio.
-
     rw = RandomWalk(50_000)
     rw.fill_walk()
 
